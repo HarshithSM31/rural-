@@ -24,8 +24,21 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const signIn = async () => {
-    const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider);
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+    } catch (error: any) {
+      console.error("Login failed:", error);
+      let message = "Login failed. Please try again.";
+      
+      if (error?.code === 'auth/unauthorized-domain') {
+        message = "This domain is not authorized for Firebase Authentication. If you are running locally, ensure 'localhost' is added to your Authorized Domains in the Firebase Console.";
+      } else if (error?.message) {
+        message = `Login failed: ${error.message}`;
+      }
+      
+      alert(message);
+    }
   };
 
   const logout = async () => {
