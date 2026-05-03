@@ -13,30 +13,30 @@ const StudentCard: React.FC<StudentCardProps> = ({ student, onDelete, onEdit }) 
   const initials = student.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
   
   return (
-    <div id={`student-${student.id}`} className="bg-white p-5 rounded-[2rem] border border-blue-50 shadow-xl shadow-blue-900/5 flex items-center justify-between hover:bg-white hover:scale-[1.01] transition-all group">
-      <div className="flex items-center gap-4">
-        <div className="w-12 h-12 rounded-2xl bg-blue-50 text-secondary flex items-center justify-center font-black text-sm uppercase group-hover:bg-primary group-hover:text-white transition-all shadow-inner">
+    <div className="bg-white p-5 shadow-2xl shadow-secondary/5 border border-slate-100 flex items-center justify-between hover:bg-neutral hover:scale-[1.01] transition-all group">
+      <div className="flex items-center gap-6">
+        <div className="w-14 h-14 bg-secondary text-white flex items-center justify-center font-serif font-black text-xl italic shadow-lg">
           {initials}
         </div>
         <div>
-          <h3 className="text-base font-black text-secondary tracking-tight">{student.name}</h3>
-          <p className="text-[10px] uppercase font-black text-slate-400 tracking-widest mt-0.5">
-            {student.class} • ID: {student.studentId}
+          <h3 className="text-xl font-serif font-black text-secondary tracking-tighter italic">{student.name}</h3>
+          <p className="text-[9px] uppercase font-black text-primary tracking-[0.2em] mt-1.5 italic">
+            {student.class} • SID: {student.studentId}
           </p>
         </div>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
         <button 
           onClick={() => onEdit(student)}
-          className="p-2 text-slate-300 hover:text-primary hover:bg-primary/5 rounded-xl transition-all"
+          className="p-3 text-slate-300 hover:text-primary hover:bg-primary/5 transition-all border border-transparent hover:border-primary/20"
         >
-          <Edit2 size={18} />
+          <Edit2 size={20} />
         </button>
         <button 
           onClick={() => onDelete(student.id)}
-          className="p-2 text-slate-300 hover:text-rose-500 hover:bg-rose-50 rounded-xl transition-all"
+          className="p-3 text-slate-300 hover:text-red-500 hover:bg-red-50 transition-all border border-transparent hover:border-red-100"
         >
-          <Trash2 size={18} />
+          <Trash2 size={20} />
         </button>
       </div>
     </div>

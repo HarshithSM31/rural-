@@ -34,30 +34,35 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </div>
             
             <nav className="hidden lg:flex items-center gap-8 text-[11px] font-black uppercase tracking-widest text-slate-500">
-              <NavLink 
-                to="/" 
-                className={({ isActive }) => cn("transition-colors hover:text-primary pb-1 border-b-2", isActive ? "text-secondary border-primary" : "border-transparent text-slate-500")}
-              >
-                Dashboard
-              </NavLink>
-              <NavLink 
-                to="/students" 
-                className={({ isActive }) => cn("transition-colors hover:text-primary pb-1 border-b-2", isActive ? "text-secondary border-primary" : "border-transparent text-slate-500")}
-              >
-                Students
-              </NavLink>
-              <NavLink 
-                to="/reports" 
-                className={({ isActive }) => cn("transition-colors hover:text-primary pb-1 border-b-2", isActive ? "text-secondary border-primary" : "border-transparent text-slate-500")}
-              >
-                Reports
-              </NavLink>
-              <NavLink 
-                to="/add-activity" 
-                className={({ isActive }) => cn("transition-colors hover:text-primary pb-1 border-b-2", isActive ? "text-secondary border-primary" : "border-transparent text-slate-500")}
-              >
-                Log Activity
-              </NavLink>
+              {user && (
+                <>
+                  <NavLink 
+                    to="/" 
+                    end
+                    className={({ isActive }) => cn("transition-colors hover:text-primary pb-1 border-b-2", isActive ? "text-secondary border-primary" : "border-transparent text-slate-500")}
+                  >
+                    Dashboard
+                  </NavLink>
+                  <NavLink 
+                    to="/students" 
+                    className={({ isActive }) => cn("transition-colors hover:text-primary pb-1 border-b-2", isActive ? "text-secondary border-primary" : "border-transparent text-slate-500")}
+                  >
+                    Students
+                  </NavLink>
+                  <NavLink 
+                    to="/reports" 
+                    className={({ isActive }) => cn("transition-colors hover:text-primary pb-1 border-b-2", isActive ? "text-secondary border-primary" : "border-transparent text-slate-500")}
+                  >
+                    Reports
+                  </NavLink>
+                  <NavLink 
+                    to="/add-activity" 
+                    className={({ isActive }) => cn("transition-colors hover:text-primary pb-1 border-b-2", isActive ? "text-secondary border-primary" : "border-transparent text-slate-500")}
+                  >
+                    Log Activity
+                  </NavLink>
+                </>
+              )}
             </nav>
 
             <div className="flex items-center gap-4">

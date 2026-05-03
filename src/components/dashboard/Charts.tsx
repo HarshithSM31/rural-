@@ -23,9 +23,10 @@ interface ChartProps {
 const Charts: React.FC<ChartProps> = ({ data, type, dataKey, nameKey = "name", color = "#f89406" }) => {
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
+      const displayTitle = payload[0].payload.displayLabel || label;
       return (
         <div className="bg-white border border-slate-100 p-4 shadow-2xl min-w-[120px]">
-          <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3 border-b border-slate-50 pb-2">{label}</p>
+          <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.2em] mb-3 border-b border-slate-50 pb-2">{displayTitle}</p>
           <div className="space-y-3">
             {payload.map((item: any, index: number) => (
               <div key={index} className="flex flex-col">
@@ -81,6 +82,10 @@ const Charts: React.FC<ChartProps> = ({ data, type, dataKey, nameKey = "name", c
             tickLine={false} 
             tick={{ fill: '#475569', fontSize: 10, fontWeight: 900 }}
             dy={15}
+            tickFormatter={(value) => {
+              const item = data.find(d => d[nameKey] === value);
+              return item ? item.name : value;
+            }}
           />
           <YAxis hide domain={[0, 100]} />
           <Tooltip content={<CustomTooltip />} />

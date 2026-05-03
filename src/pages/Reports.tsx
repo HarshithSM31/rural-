@@ -46,10 +46,14 @@ const Reports = () => {
     ? activities 
     : activities.filter(a => (a.lessonName || 'General') === selectedSubject);
 
-  const performanceData = filteredActivities.slice(0, 15).reverse().map(a => ({
+  const performanceData = filteredActivities.slice(0, 15).reverse().map((a) => ({
+    id: a.id,
     name: format(new Date(a.date), 'MMM dd'),
     score: a.score,
-    subject: a.lessonName || 'General'
+    subject: a.lessonName || 'General',
+    displayLabel: selectedSubject === 'All' 
+      ? `${format(new Date(a.date), 'MM/dd')} - ${a.lessonName || 'Gen'}` 
+      : format(new Date(a.date), 'MMM dd')
   }));
 
   const selectedStudent = students.find(s => s.id === selectedStudentId);
@@ -138,7 +142,7 @@ const Reports = () => {
 
               {performanceData.length > 0 ? (
                 <div className="space-y-4">
-                  <Charts data={performanceData} type="line" dataKey="score" color="#f89406" />
+                  <Charts data={performanceData} type="line" dataKey="score" nameKey="id" color="#f89406" />
                   <div className="flex items-center justify-center gap-8 mt-6">
                      <div className="flex items-center gap-3">
                         <div className="w-4 h-4 rounded-full bg-primary shadow-lg shadow-primary/20"></div>

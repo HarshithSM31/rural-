@@ -3,11 +3,12 @@ import ActivityForm from '../components/activities/ActivityForm';
 
 const AddActivity = () => {
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col gap-1">
-        <h2 className="text-2xl font-bold text-gray-900">Daily Log</h2>
-        <p className="text-sm text-gray-500">Document student progress and attendance for today</p>
+    <div className="space-y-10">
+      <div className="flex items-center gap-4">
+        <div className="h-0.5 w-12 bg-primary"></div>
+        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">Activities & Attendance</span>
       </div>
+      <h2 className="text-5xl font-serif font-black text-secondary tracking-tighter leading-tight italic">Daily Log <br/>Sync.</h2>
       <ActivityForm />
     </div>
   );

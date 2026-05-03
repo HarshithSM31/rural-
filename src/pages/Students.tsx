@@ -65,29 +65,33 @@ const Students = () => {
 
   return (
     <div className="space-y-8 pb-10">
-      <div className="flex justify-between items-end">
-        <div className="flex flex-col gap-1">
-          <h2 className="text-3xl font-black text-secondary tracking-tight">Registry Hub</h2>
-          <p className="text-[12px] text-primary font-bold uppercase tracking-widest">{students.length} Active Profiles</p>
+      <div className="flex justify-between items-end mb-12">
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-4">
+            <div className="h-0.5 w-12 bg-primary"></div>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary italic">Record Management</span>
+          </div>
+          <h2 className="text-6xl font-serif font-black text-secondary tracking-tighter leading-tight italic">Registry Hub.</h2>
+          <p className="text-[11px] text-slate-400 font-black uppercase tracking-[0.3em] mt-2">{students.length} Institutional Profiles Active</p>
         </div>
         <button 
           onClick={() => { setEditingStudent(undefined); setIsFormOpen(true); }}
-          className="w-14 h-14 bg-primary text-white rounded-2xl shadow-xl shadow-primary/30 hover:bg-primary/90 transition-all hover:scale-110 active:scale-90 flex items-center justify-center border-4 border-white"
+          className="w-20 h-20 bg-primary text-white shadow-2xl shadow-primary/30 hover:scale-105 active:scale-95 flex items-center justify-center transition-all group"
         >
-          <UserPlus size={24} />
+          <UserPlus size={32} className="group-hover:rotate-12 transition-transform" />
         </button>
       </div>
 
-      <div className="relative group">
-        <div className="absolute left-6 top-1/2 -translate-y-1/2 text-primary group-focus-within:scale-110 transition-transform">
-          <Search size={22} />
+      <div className="relative group mb-10">
+        <div className="absolute left-8 top-1/2 -translate-y-1/2 text-primary group-focus-within:translate-x-2 transition-all">
+          <Search size={24} />
         </div>
         <input 
           type="text"
-          placeholder="Search identity or class..."
+          placeholder="Search institutional registry by name or ID..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-16 pr-6 py-5 rounded-[2rem] bg-white border border-blue-100 shadow-xl shadow-blue-900/5 focus:ring-4 focus:ring-primary/10 transition-all outline-none font-bold text-secondary"
+          className="w-full pl-20 pr-10 py-6 bg-white border border-slate-100 shadow-2xl shadow-secondary/5 focus:border-primary transition-all outline-none font-serif font-bold text-xl italic text-secondary placeholder:text-slate-200"
         />
       </div>
 

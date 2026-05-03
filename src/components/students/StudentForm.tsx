@@ -25,73 +25,72 @@ const StudentForm: React.FC<StudentFormProps> = ({ initialData, onSubmit, onClos
   };
 
   return (
-    <div className="fixed inset-0 bg-secondary/40 backdrop-blur-md flex items-center justify-center p-6 z-[100]">
-      <div className="bg-white rounded-[3rem] w-full max-w-md p-10 shadow-full shadow-blue-900/20 animate-in fade-in zoom-in-95 duration-300 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-secondary"></div>
-        <div className="flex justify-between items-center mb-8">
+    <div className="fixed inset-0 bg-secondary/80 backdrop-blur-xl flex items-center justify-center p-6 z-[100]">
+      <div className="bg-white w-full max-w-lg shadow-2xl animate-in fade-in zoom-in-95 duration-300 relative overflow-hidden flex flex-col">
+        <div className="p-10 border-b border-slate-100 flex justify-between items-center bg-neutral">
           <div>
-            <h2 className="text-2xl font-black text-secondary tracking-tight">{initialData ? 'Update Profile' : 'New Identity'}</h2>
-            <p className="text-[10px] font-black text-primary uppercase tracking-widest mt-1">Registry Enrollment</p>
+            <h2 className="text-4xl font-serif font-black text-secondary tracking-tighter italic">{initialData ? 'Update Profile' : 'Registry Entry'}</h2>
+            <p className="text-[9px] font-black text-primary uppercase tracking-[0.3em] mt-1.5 italic">Institutional Enrollment Session</p>
           </div>
-          <button onClick={onClose} className="p-3 hover:bg-slate-50 text-slate-300 hover:text-primary rounded-2xl transition-all">
-            <X size={24} />
+          <button onClick={onClose} className="p-4 hover:bg-white text-slate-300 hover:text-primary transition-all border border-transparent hover:border-slate-100 shadow-sm">
+            <X size={32} />
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-2">
-            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Full Identity Name</label>
+        <form onSubmit={handleSubmit} className="p-10 space-y-8">
+          <div className="space-y-3">
+            <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1 italic">Legal Identity Name</label>
             <input
               required
               type="text"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-6 py-4 rounded-2xl bg-blue-50 border-none focus:ring-4 focus:ring-primary/10 font-bold text-secondary transition-all outline-none"
+              className="w-full px-8 py-5 bg-neutral border border-slate-100 focus:border-primary font-serif font-bold text-xl italic text-secondary transition-all outline-none"
               placeholder="e.g. Rajesh Kumar"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
-            <div className="space-y-2">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Level/Class</label>
+          <div className="grid grid-cols-2 gap-8">
+            <div className="space-y-3">
+              <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1 italic">Academic Level</label>
               <input
                 required
                 type="text"
                 value={formData.class}
                 onChange={(e) => setFormData({ ...formData, class: e.target.value })}
-                className="w-full px-6 py-4 rounded-2xl bg-blue-50 border-none focus:ring-4 focus:ring-primary/10 font-bold text-secondary transition-all outline-none"
+                className="w-full px-8 py-5 bg-neutral border border-slate-100 focus:border-primary font-serif font-bold text-xl italic text-secondary transition-all outline-none"
                 placeholder="Grade 5"
               />
             </div>
-            <div className="space-y-2">
-              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Age</label>
+            <div className="space-y-3">
+              <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1 italic">Age</label>
               <input
                 required
                 type="number"
                 value={formData.age}
                 onChange={(e) => setFormData({ ...formData, age: e.target.value })}
-                className="w-full px-6 py-4 rounded-2xl bg-blue-50 border-none focus:ring-4 focus:ring-primary/10 font-bold text-secondary transition-all outline-none"
+                className="w-full px-8 py-5 bg-neutral border border-slate-100 focus:border-primary font-serif font-bold text-xl italic text-secondary transition-all outline-none"
                 placeholder="10"
               />
             </div>
           </div>
 
-          <div className="space-y-2">
-            <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">System ID / Roll</label>
+          <div className="space-y-3">
+            <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] ml-1 italic">Institutional ID Number</label>
             <input
               required
               type="text"
               value={formData.studentId}
               onChange={(e) => setFormData({ ...formData, studentId: e.target.value })}
-              className="w-full px-6 py-4 rounded-2xl bg-blue-50 border-none focus:ring-4 focus:ring-primary/10 font-bold text-secondary transition-all outline-none"
+              className="w-full px-8 py-5 bg-neutral border border-slate-100 focus:border-primary font-serif font-bold text-xl italic text-secondary transition-all outline-none"
               placeholder="S1001"
             />
           </div>
           <button
             type="submit"
-            className="w-full py-5 bg-primary text-white rounded-full font-black text-lg shadow-2xl shadow-primary/30 hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-95 mt-4"
+            className="w-full py-6 bg-secondary text-white font-black text-xs uppercase tracking-[0.3em] shadow-2xl shadow-secondary/20 hover:brightness-110 active:scale-95 transition-all mt-6"
           >
-            {initialData ? 'Sync Updates' : 'Confirm Registration'}
+            {initialData ? 'Synchronize Updates' : 'Complete Registration'}
           </button>
         </form>
       </div>
