@@ -1,0 +1,43 @@
+{
+  "entities": {
+    "student": {
+      "title": "Student",
+      "description": "A student in the rural school system",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Full name of the student" },
+        "class": { "type": "string", "description": "Class or grade level (e.g., Grade 1, Grade 2)" },
+        "age": { "type": "number", "description": "Age of the student" },
+        "studentId": { "type": "string", "description": "Unique identifier for the student" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "class", "age", "studentId"]
+    },
+    "activity": {
+      "title": "Activity",
+      "description": "A daily lesson or activity record for a student",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string", "description": "Reference to the student ID" },
+        "lessonName": { "type": "string", "description": "Name of the lesson or subject" },
+        "date": { "type": "string", "format": "date" },
+        "score": { "type": "number", "description": "Score from 0 to 100" },
+        "attendance": { "type": "string", "enum": ["present", "absent"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["studentId", "lessonName", "date", "score", "attendance"]
+    }
+  },
+  "firestore": {
+    "/students/{studentId}": {
+      "schema": "student",
+      "description": "Collection of students"
+    },
+    "/activities/{activityId}": {
+      "schema": "activity",
+      "description": "Collection of student learning activities"
+    }
+  }
+}
